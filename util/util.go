@@ -7,8 +7,10 @@ import (
 )
 
 func main() {
-	inputFile := flag.String("i", "", "input file")
-	outputDir := flag.String("o", "", "output dir")
+
+	packagesDir := flag.String("p", "../packages", "packages directory")
+	themesDir := flag.String("t", "../themes", "themes directory")
+	outputDir := flag.String("o", "./_data", "output dir")
 
 	flag.Parse()
 
@@ -19,8 +21,13 @@ func main() {
 
 	switch flag.Arg(0) {
 	case "ci":
-		if *inputFile == "" {
-			println("No input file provided")
+		if *packagesDir == "" {
+			println("No packages directory provided")
+			return
+		}
+
+		if *themesDir == "" {
+			println("No themes directory provided")
 			return
 		}
 
@@ -29,7 +36,7 @@ func main() {
 			return
 		}
 
-		if ContinuousIntegration(inputFile, outputDir) {
+		if ContinuousIntegration(packagesDir, themesDir, outputDir) {
 			return
 		}
 	case "packages":

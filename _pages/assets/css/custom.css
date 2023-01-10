@@ -5,12 +5,14 @@
     vertical-align: sub;
 }
 
+.badge a,
 a.badge {
     color: #fff;
 }
 
+.badge a:hover,
 a.badge:hover {
-    color: #f8f8f2;
+    color: #dfdfdf;
 }
 
 .badge:hover {

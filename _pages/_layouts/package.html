@@ -8,197 +8,181 @@ title_override: name
 
 {% assign plugin_name = page._name | remove: 'plugin-' | remove: 'theme-' %}
 
-{% if page.release == "" %}
-    {% assign release_days = -1 %}
-    {% assign release_days_str = "Never" %}
-{% else %}
-    {% assign date_format = "%s" | date: "%s" %}
-    {% assign date = page.release | date: "%s" %}
-    {% assign now = "now" | date: "%s" %}
-    {% assign diff = now | minus: date %}
-    {% assign release_days = diff | divided_by: 86400 %}
-
-    {% assign release_days_str = release_days | append: " days ago" %}
-    {% if release_days == 0 %}
-        {% assign release_days_str = "Today" %}
-    {% elsif release_days == 1 %}
-        {% assign release_days_str = "Yesterday" %}
-    {% elsif release_days > 31 and release_days < 365 %}
-        {% assign release_days_str=release_days | divided_by: 31 | append: " months ago" %}
-    {% elsif release_days> 365 %}
-        {% assign release_days_str = release_days | divided_by: 365 | append: " years ago" %}
-    {% endif %}
-{% endif %}
-
 {% if page.updated == "" %}
-    {% assign updated_days = -1 %}
-    {% assign updated_days_str = "Never" %}
+{% assign updated_days = -1 %}
+{% assign updated_days_str = "Never" %}
 {% else %}
-    {% assign date_format = "%s" | date: "%s" %}
-    {% assign date = page.updated | date: "%s" %}
-    {% assign now = "now" | date: "%s" %}
-    {% assign diff = now | minus: date %}
-    {% assign updated_days = diff | divided_by: 86400 %}
+{% assign date_format = "%s" | date: "%s" %}
+{% assign date = page.updated | date: "%s" %}
+{% assign now = "now" | date: "%s" %}
+{% assign diff = now | minus: date %}
+{% assign updated_days = diff | divided_by: 86400 %}
 
-    {% assign updated_days_str = updated_days | append: " days ago" %}
-    {% if updated_days == 0 %}
-        {% assign updated_days_str = "Today" %}
-    {% elsif updated_days == 1 %}
+{% assign updated_days_str = updated_days | append: " days ago" %}
+{% if updated_days == 0 %}
+{% assign updated_days_str = "Today" %}
+{% elsif updated_days == 1 %}
         {% assign updated_days_str = "Yesterday" %}
     {% elsif updated_days > 31 and updated_days < 365 %}
         {% assign updated_days_str=updated_days | divided_by: 31 | append: " months ago" %}
     {% elsif updated_days> 365 %}
         {% assign updated_days_str = updated_days | divided_by: 365 | append: " years ago" %}
     {% endif %}
-{% endif %}
-
-<div class="row">
-  <div class="col-4 center">
-    <a href="{{'/packages/' | relative_url }}" class="badge bg-green">
-      &#8592; Go back to <span class="package-emoji">:package:</span> Package List
-    </a>
-  </div>
-  <div class="col-4 center">
-    {% assign random = site.data.packages | sort | sample: 1 %}
-    <a href="{{ '/packages/' | relative_url }}{{random[1].name}}" class="badge bg-blue">
-    <span class="luck-emoji">:four_leaf_clover:</span> I'm feeling lucky!
-    </a>
-  </div>
-  <div class="col-4 center">
-    <a href="{{ '/themes/' | relative_url }}" class="badge bg-purple">
-      GoTo <span class="theme-emoji">:rainbow:</span> Theme List &#8594;
-    </a>
-  </div>
-</div>
-
-<div class="center">
-  <div>
-    {% if release_days >= 183 or updated_days >= 183 %}
-    <p style="color:#ff79c6;">
-      {% if release_days >= 183 %}
-      :warning: This project had no new release in the last 6 months. :warning:<br />
-      {% endif %}
-      {% if updated_days >= 183 %}
-      :warning: This project has not been updated in the last 6 months. :warning:<br />
-      {% endif %}
-    </p>
-    {% endif %}
-  </div>
-  {% if page.image != "" %}
-    <img src="{{page.image}}" alt="{{page.title}}" />
-  {% else %}
-    {% assign clean_title = page.title | url_encode %}
-    <img src="//via.placeholder.com/450x100/282a36/bd93f9.png?text={{clean_title}}+has+no+image+:(" />
   {% endif %}
 
-  <h1>
-    <a class="purple" href="{{page.repository}}">{{plugin_name}}</a>
-  </h1>
-  {% assign repo = page.repository | remove: "https://github.com/" | split: "/" %}
-  {% assign owner_page = repo[0] %}
-  {% assign maintainer = page.author | remove: "<" | remove: ">" | split: " " %}
-    <h3>by <a href="https://github.com/{{owner_page}}">{{maintainer[0]}}</a></h3>
-    <div class="row center mb-1">
-      <div class="col-2 offset-3">
-        <span class="badge bg-blue" title="{{page.stars}} Stars on GitHub">
-          {% if page.stars > 0 %}
-          :star: {{page.stars}}
-          {% endif %}
-        </span>
-      </div>
-      <div class="col-2">
-        <span class="badge bg-blue" title="{{page.forks}} Forks on GitHub">
-          {% if page.forks > 0 %}
-          :fork_and_knife: {{page.forks}}
-          {% endif %}
-        </span>
-      </div>
-      <div class="col-2">
-        <span class="badge bg-blue" title="{{page.watchers}} Watchers on GitHub">
-          {% if page.watchers > 0 %}
-          :eyes: {{page.watchers}}
-          {% endif %}
-        </span>
-      </div>
+  <div class="row">
+    <div class="col-4 center">
+      <a href="{{'/packages/' | relative_url }}" class="badge bg-green">
+        &#8592; Go back to <span class="package-emoji">:package:</span> Package List
+      </a>
+    </div>
+    <div class="col-4 center">
+      {% assign random = site.data.packages | sort | sample: 1 %}
+      <a href="{{ '/packages/' | relative_url }}{{random[1].name}}" class="badge bg-blue">
+        <span class="luck-emoji">:four_leaf_clover:</span> I'm feeling lucky!
+      </a>
+    </div>
+    <div class="col-4 center">
+      <a href="{{ '/themes/' | relative_url }}" class="badge bg-purple">
+        GoTo <span class="theme-emoji">:rainbow:</span> Theme List &#8594;
+      </a>
+    </div>
+  </div>
+
+  <div class="center" style="margin-top: 10px;">
+    {% if updated_days >= 183 %}
+    <div>
+      <p style="color:#ff79c6;">
+        {% if updated_days >= 183 %}
+        :warning: This project has not been updated in the last 6 months. :warning:<br />
+        {% endif %}
+      </p>
+    </div>
+    {% endif %}
+    <div>
+      {% if page.image != "" %}
+      <img src="{{page.image}}" alt="{{page.title}}" style="max-height: 400px;" />
+      {% else %}
+      <svg>
+        <g>
+          <text x="50%" y="30%" text-anchor="middle" alignment-baseline="middle" font-size="30" fill="#bd93f9">
+            Package 
+          </text>
+          <text x="50%" y="50%" text-anchor="middle" alignment-baseline="middle" font-size="30" fill="#bd93f9">
+            {{plugin_name}}
+          </text>
+          <text x="50%" y="70%" text-anchor="middle" alignment-baseline="middle" font-size="30" fill="#bd93f9">
+            has no image :(
+              </text>
+        </g>
+      </svg>
+      {% endif %}
     </div>
 
-    {% if page.issues > 0 %}
-    <div class="row center mb-1">
-      <div class="col-2 offset-3">
+    <h1>
+      <a class="purple" href="{{page.repository}}">{{plugin_name}}</a>
+    </h1>
+    {% assign repo = page.repository | remove: "https://github.com/" | split: "/" %}
+    {% assign owner_page = repo[0] %}
+    {% assign maintainer = page.author | remove: "<" | remove: ">" | split: " " %}
+	<h3>by <a href="https://github.com/{{owner_page}}">{{maintainer[0]}}</a></h3>
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+      <div style="flex: 0 0 50%; max-width: 50%;" class="center">
+        <a href="{{page.repository}}" class="badge bg-blue">
+          :octocat: View on GitHub
+        </a>
+      </div>
+      <div style="flex: 0 0 50%; max-width: 50%;" class="center">
+        <a href="{{page.repository}}/releases" class="badge bg-blue">
+          :warning: Report an Issue
+        </a>
+      </div>
+    </div>
+    <h3>
+      <span class="mlr-5" title="{{page.stars}} Stars on GitHub">
+        {% if page.stars > 0 %}
+          :star: {{page.stars}}
+        {% endif %}
+      </span>
+      <span class="mlr-5" title="{{page.forks}} Forks on GitHub">
+        {% if page.forks > 0 %}
+          :fork_and_knife: {{page.forks}}
+        {% endif %}
+      </span>
+      <span class="mlr-5" title="{{page.issues}} Open Issues on GitHub">
+        {% if page.issues > 0 %}
+          :warning: {{page.issues}}
+        {% endif %}
+      </span>
+      <span class="mlr-5" title="{{page.watchers}} Watchers on GitHub">
+        {% if page.watchers > 0 %}
+          :eyes: {{page.watchers}}
+        {% endif %}
+      </span>
+    </h3>
+
+      {% if page.issues > 0 %}
+      <div class="row center mb-1">
+        <div class="col-2 offset-3">
           <span class="badge bg-red" title="{{page.issues}} Open Issues on GitHub">
             :warning: {{page.issues}}
           </span>
+        </div>
       </div>
-    </div>
-    {% endif %}
+      {% endif %}
 
-    {% if page.license != "Unknown" %}
-    <div class="row center">
-      <div class="col-2 offset-5">
-        <span class="badge bg-blue">
-          :page_facing_up: {{page.license}}
-        </span>
+      {% if page.license != "Unknown" %}
+      <div class="row center">
+        <div class="col-2 offset-5">
+          <span class="badge bg-blue">
+            :page_facing_up: {{page.license}}
+          </span>
+        </div>
       </div>
-    </div>
-    {% endif %}
-    {% if page.version != "" %}
+      {% endif %}
+      {% if page.version != "" %}
       <h3>{{page.version}}</h3>
-    {% endif %}
+      {% endif %}
 
-    <br />
+      {% if updated_days > -1 %}
+      <div>
+        <span class="badge bg-blue" title="Last updated: {{date | date: " %d %b %Y"}}">
+          {% if updated_days == 0 %}
+          Today
+          {% elsif updated_days == 1 %}
+          Yesterday
+          {% elsif updated_days < 365 %} {{updated_days}} days ago {% elsif updated_days < 730 %} 1 year ago {% else %}
+            {{updated_days | divided_by: 365}} years ago {% endif %} </span>
+      </div>
+      {% endif %}
 
-    <a href="https://github.com/IT-Hock/fpm-repository/issues/new?assignees=&labels=&template=bug_report.md&title=[ISSUE]%20{{plugin_name | url_encode}}"
-      class="badge v-center bg-red m-0">
-      Found an issue?
-    </a>
-</div>
 
-<br />
+      <div>
+        {% if page.tags.size > 0 %}
+        {% for tag in page.tags %}
+        <a class="badge bg-purple" href="/packages?tag={{tag}}">#{{tag}}</a>
+        {% endfor %}
+        {% endif %}
+      </div>
 
-<blockquote>{{page.description}}</blockquote>
+      <br />
 
-<br />
+      <a href="https://github.com/IT-Hock/fpm-repository/issues/new?assignees=&labels=package-issue&template=package-issue.md&title={{plugin_name | url_encode}}"
+        class="badge v-center bg-red m-0">
+        Found an issue?
+      </a>
+  </div>
 
-{% if page.tags.size > 0 %}
-<div class="border">
-  {% for tag in page.tags %}
-  <a class="purple" href="/tags/{{tag}}">#{{tag}}</a>
-  {% endfor %}
-</div>
-{% endif %}
+  <br />
 
-<code id="code" class="panel w-96 d-block">$ omf install {{page.title}}</code>
+  <blockquote>{{page.description}}</blockquote>
 
-<button class="copy-clipboard" id="copy-clipboard" data-clipboard="omf install {{page.title}}">
-  <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f4cb.png" width="20" height="20">
-</button>
-<div style="height:50px;">
-</div>
+  <br />
 
-<div>
-  {% if release_days > -1 %}
-    <span style="float:left">
-      <small>
-        Last release:
-        {% if release_days == 0 %}
-        Today
-        {% elsif release_days == 1 %}
-        Yesterday
-        {% elsif release_days < 365 %} {{release_days}} days ago {% elsif release_days < 730 %} 1 year ago {% else %}
-          {{release_days | divided_by: 365}} years ago {% endif %} </small>
-    </span>
-  {% endif %}
+  <code id="code" class="panel w-96 d-block">$ fpm install {{page.title}}</code>
 
-  {% if updated_days > -1 %}
-    <span style="float:right">
-      <small>
-        Last commit:
-        {% if updated_days == 0 %}
-        Today
-        {% elsif updated_days == 1 %}
-        Yesterday
-        {% elsif updated_days < 365 %} {{updated_days}} days ago {% elsif updated_days < 730 %} 1 year ago {% else %}
-          {{updated_days | divided_by: 365}} years ago {% endif %} </small>
-    </span>
-  {% endif %}
-</div>
+  <button class="copy-clipboard" id="copy-clipboard" data-clipboard="fpm install {{page.title}}">
+    <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f4cb.png" width="20" height="20">
+  </button>
+  <div style="height:50px;">
+  </div>

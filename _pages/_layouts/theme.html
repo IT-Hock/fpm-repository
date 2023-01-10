@@ -4,30 +4,9 @@ title: name
 # Override site title
 title_override: name
 ---
+<script src="//code.jquery.com/color/jquery.color-2.1.2.min.js"></script>
 
 {% assign plugin_name = page._name | remove: 'plugin-' | remove: 'theme-' %}
-
-{% if page.release == "" %}
-    {% assign release_days = -1 %}
-    {% assign release_days_str = "Never" %}
-{% else %}
-    {% assign date_format = "%s" | date: "%s" %}
-    {% assign date = page.release | date: "%s" %}
-    {% assign now = "now" | date: "%s" %}
-    {% assign diff = now | minus: date %}
-    {% assign release_days = diff | divided_by: 86400 %}
-
-    {% assign release_days_str = release_days | append: " days ago" %}
-    {% if release_days == 0 %}
-        {% assign release_days_str = "Today" %}
-    {% elsif release_days == 1 %}
-        {% assign release_days_str = "Yesterday" %}
-    {% elsif release_days > 31 and release_days < 365 %}
-        {% assign release_days_str=release_days | divided_by: 31 | append: " months ago" %}
-    {% elsif release_days> 365 %}
-        {% assign release_days_str = release_days | divided_by: 365 | append: " years ago" %}
-    {% endif %}
-{% endif %}
 
 {% if page.updated == "" %}
     {% assign updated_days = -1 %}
@@ -70,25 +49,35 @@ title_override: name
   </div>
 </div>
 
-<div class="panel center">
-  <div>
-    {% if release_days >= 183 or updated_days >= 183 %}
-    <p style="color:#ff79c6;">
-      {% if release_days >= 183 %}
-      :warning: This project had no new release in the last 6 months. :warning:<br />
-      {% endif %}
-      {% if updated_days >= 183 %}
-      :warning: This project has not been updated in the last 6 months. :warning:<br />
-      {% endif %}
-    </p>
+<div class="panel center" style="margin-top: 10px;">
+    {% if updated_days >= 183 %}
+    <div>
+      <p style="color:#ff79c6;">
+        {% if updated_days >= 183 %}
+        :warning: This project has not been updated in the last 6 months. :warning:<br />
+        {% endif %}
+      </p>
+    </div>
     {% endif %}
-  </div>
+    <div>
   {% if page.image != "" %}
-    <img src="{{page.image}}" alt="{{page.title}}" />
+    <img src="{{page.image}}" alt="{{page.title}}" style="max-height: 400px;" />
   {% else %}
-    {% assign clean_title = page.title | url_encode %}
-    <img src="//via.placeholder.com/450x100/282a36/bd93f9.png?text={{clean_title}}+has+no+image+:(" />
-  {% endif %}
+      <svg>
+        <g>
+          <text x="50%" y="30%" text-anchor="middle" alignment-baseline="middle" font-size="30" fill="#bd93f9">
+            Theme 
+          </text>
+          <text x="50%" y="50%" text-anchor="middle" alignment-baseline="middle" font-size="30" fill="#bd93f9">
+            {{plugin_name}}
+          </text>
+          <text x="50%" y="70%" text-anchor="middle" alignment-baseline="middle" font-size="30" fill="#bd93f9">
+            has no image :(
+              </text>
+        </g>
+      </svg>
+      {% endif %}
+    </div>
 
     <h1>
       <a class="purple" href="{{page.repository}}">{{plugin_name}}</a>
@@ -132,20 +121,55 @@ title_override: name
       </span>
     </h3>
 
+      {% if page.issues > 0 %}
+      <div class="row center mb-1">
+        <div class="col-2 offset-3">
+          <span class="badge bg-red" title="{{page.issues}} Open Issues on GitHub">
+            :warning: {{page.issues}}
+          </span>
+        </div>
+      </div>
+      {% endif %}
     {% if page.license != "Unknown" %}
-      <h4>{{page.license}}</h4>
+      <div class="row center">
+        <div class="col-2 offset-5">
+          <span class="badge bg-blue">
+            :page_facing_up: {{page.license}}
+          </span>
+        </div>
+      </div>
     {% endif %}
     {% if page.version != "" %}
       <h3>{{page.version}}</h3>
     {% endif %}
 
+      {% if updated_days > -1 %}
+      <div>
+        <span class="badge bg-blue" title="Last updated: {{date | date: " %d %b %Y"}}">
+          {% if updated_days == 0 %}
+          Today
+          {% elsif updated_days == 1 %}
+          Yesterday
+          {% elsif updated_days < 365 %} {{updated_days}} days ago {% elsif updated_days < 730 %} 1 year ago {% else %}
+            {{updated_days | divided_by: 365}} years ago {% endif %} </span>
+      </div>
+      {% endif %}
+
+
+      <div>
+        {% if page.tags.size > 0 %}
+        {% for tag in page.tags %}
+        <a class="badge bg-purple" href="/packages?tag={{tag}}">#{{tag}}</a>
+        {% endfor %}
+        {% endif %}
+      </div>
     <br />
 
-    <a href="https://github.com/IT-Hock/fpm-repository/issues/new?assignees=&labels=&template=bug_report.md&title=[ISSUE]%20{{plugin_name | url_encode}}"
-      class="badge v-center bg-red m-0">
-      Found an issue?
-    </a>
-</div>
+      <a href="https://github.com/IT-Hock/fpm-repository/issues/new?assignees=&labels=package-issue&template=theme-issue.md&title={{plugin_name | url_encode}}"
+        class="badge v-center bg-red m-0">
+        Found an issue?
+      </a>
+  </div>
 
 <br />
 
@@ -153,39 +177,11 @@ title_override: name
 
 <br />
 
-<code id="code" class="panel w-96 d-block">$ omf install {{page.title}}</code>
+<code id="code" class="panel w-96 d-block">$ fpm install {{page.title}}</code>
 
-<button class="copy-clipboard" id="copy-clipboard" data-clipboard="omf install {{page.title}}">
+<button class="copy-clipboard" id="copy-clipboard" data-clipboard="fpm install {{page.title}}">
   <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f4cb.png" width="20" height="20">
 </button>
 
 <div style="height:50px;">
-</div>
-
-<div>
-  {% if release_days > -1 %}
-    <span style="float:left">
-      <small>
-        Last release:
-        {% if release_days == 0 %}
-        Today
-        {% elsif release_days == 1 %}
-        Yesterday
-        {% elsif release_days < 365 %} {{release_days}} days ago {% elsif release_days < 730 %} 1 year ago {% else %}
-          {{release_days | divided_by: 365}} years ago {% endif %} </small>
-    </span>
-  {% endif %}
-
-  {% if updated_days > -1 %}
-    <span style="float:right">
-      <small>
-        Last commit:
-        {% if updated_days == 0 %}
-        Today
-        {% elsif updated_days == 1 %}
-        Yesterday
-        {% elsif updated_days < 365 %} {{updated_days}} days ago {% elsif updated_days < 730 %} 1 year ago {% else %}
-          {{updated_days | divided_by: 365}} years ago {% endif %} </small>
-    </span>
-  {% endif %}
 </div>

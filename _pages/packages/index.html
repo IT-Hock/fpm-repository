@@ -66,33 +66,12 @@ layout: custom
                 <th>Description</th>
                 <th>Tags</th>
                 <th>
-                    Release
+                    Updated
                 </th>
             </tr>
         </thead>
         <tbody>
             {% for package in packages %}
-                {% if package[1].release == "" %}
-                    {% assign release_days = -1 %}
-                    {% assign release_days_str = "Never" %}
-                {% else %}
-                    {% assign date_format = "%s" | date: "%s" %}
-                    {% assign date = package[1].release | date: "%s" %}
-                    {% assign now = "now" | date: "%s" %}
-                    {% assign diff = now | minus: date %}
-                    {% assign release_days = diff | divided_by: 86400 %}
-                    {% assign release_days_str = release_days | append: " days ago" %}
-                    {% if release_days == 0 %}
-                        {% assign release_days_str = "Today" %}
-                    {% elsif release_days == 1 %}
-                        {% assign release_days_str = "Yesterday" %}
-                    {% elsif release_days > 31 and release_days < 365 %}
-                        {% assign release_days_str = release_days | divided_by: 31 | append: " months ago" %}
-                    {% elsif release_days > 365 %}
-                        {% assign release_days_str = release_days | divided_by: 365 | append: " years ago" %}
-                    {% endif %}
-                {% endif %}
-
                 {% if package[1].updated == "" %}
                     {% assign updated_days = -1 %}
                     {% assign updated_days_str = "Never" %}
@@ -125,7 +104,7 @@ layout: custom
                     {% endif %}
                 </td>
                 <td data-sort="{{package[0]}}" data-search="{{package[0]}}" width="20%">
-                    <a href="{{'/packages/' | relative_url }}{{package[1].name}}/">
+                    <a href="{{'/packages/' | relative_url }}{{package[1].name | downcase }}/">
                         {{package[0]}}
                     </a>
                 </td>
@@ -138,26 +117,7 @@ layout: custom
                     </span>
                     {% endfor %}
                 </td>
-                {% if release_days > -1 %}
-                    <td data-sort="{{release_days}}" data-search="{{release_days}}">
-                {% else %}
                     <td data-sort="{{updated_days}}" data-search="{{updated_days}}">
-                {% endif %}
-                    {% if release_days > -1 %}
-                        {% assign release_badge = "bg-green" %}
-                        {% if release_days > 186 %}
-                        {% assign release_badge = "bg-red" %}
-                        {% elsif release_days > 93 %}
-                        {% assign release_badge = "bg-blue" %}
-                        {% endif %}
-                        
-                        <span class="badge {{release_badge}}" title="Last Release: {{package[1].release | date: " %d %b %Y"}}">
-                            :ship: {{release_days_str}}
-                        </span>
-                    {% endif %}
-                    {% if release_days > -1 and updated_days > -1 %}
-                        <br>
-                    {% endif %}
                     {% if updated_days > -1 %}
                         {% assign update_badge = "bg-green" %}
                         {% if updated_days > 186 %}
