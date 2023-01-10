@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: IT-Hock Support
+    url: mailto:support@it-hock.de
+    about: Please only use for business inquiries.
+  - name: FPM Bugs/Feature Reporting
+    url: https://github.com/IT-Hock/fpm/issues
+    about: Please report issues with the fish package manager here.
