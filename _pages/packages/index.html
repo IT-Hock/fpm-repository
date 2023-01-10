@@ -1,0 +1,177 @@
+---
+layout: custom
+---
+<script src="{{'/assets/js/packages.js' | relative_url }}"></script>
+
+{% assign packages = site.data.packages | sort %}
+{% assign date_format = "%s" | date: "%s" %}
+{% assign date = site.time | date: "%s" %}
+{% assign now = "now" | date: "%s" %}
+{% assign diff = now | minus: date %}
+{% assign site_updated_days = diff | divided_by: 86400 %}
+
+<div class="panel">
+    <div>
+        <input type="text" id="search_input" placeholder="Search.." />
+        <select class="ml-15" id="page_length">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+            <option value="250">250</option>
+        </select>
+    </div>
+    <div>
+        <span class="badge bg-red" title="Hide out of date packages" id="hide_outdated">
+            <img class="emoji" alt=":package:" src="//github.githubassets.com/images/icons/emoji/unicode/1f4e6.png" width="20" height="20">
+        </span>
+    </div>
+    <div>
+        <div id="active-tag-filter"></div>
+    </div>
+</div>
+
+<div class="panel center">
+    <a href="https://github.com/IT-Hock/fpm-repository/issues/new?assignees=&labels=package-suggestion&template=package-suggestion.md"
+        class="badge v-center bg-purple">
+        Got an awesome package and it's not listed here?
+    </a>
+    <br />
+    <a href="https://github.com/IT-Hock/fpm-repository/issues/new?assignees=&labels=package-issue&template=package-issue.md"
+        class="badge v-center bg-red">
+        Found an issue?
+    </a>
+</div>
+
+<div class="panel">
+    <div class="mb-5 center">
+        <span class="badge bg-purple" title="Total Packages indexed">:package: {{packages | size}}</span>
+        {% if site_updated_days < 1 %}
+            <span class="badge bg-green" title="Last Update of package index">:zap: Today</span>
+        {% else %}
+            <span class="badge bg-blue" title="Last Updated of package index">:zap: {{site_updated_days}} days ago</span>
+        {% endif %}
+    </div>
+    <table id="packages_table">
+        <thead>
+            <tr>
+                <th>
+                    Preview
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>Description</th>
+                <th>Tags</th>
+                <th>
+                    Release
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for package in packages %}
+                {% if package[1].release == "" %}
+                    {% assign release_days = -1 %}
+                    {% assign release_days_str = "Never" %}
+                {% else %}
+                    {% assign date_format = "%s" | date: "%s" %}
+                    {% assign date = package[1].release | date: "%s" %}
+                    {% assign now = "now" | date: "%s" %}
+                    {% assign diff = now | minus: date %}
+                    {% assign release_days = diff | divided_by: 86400 %}
+                    {% assign release_days_str = release_days | append: " days ago" %}
+                    {% if release_days == 0 %}
+                        {% assign release_days_str = "Today" %}
+                    {% elsif release_days == 1 %}
+                        {% assign release_days_str = "Yesterday" %}
+                    {% elsif release_days > 31 and release_days < 365 %}
+                        {% assign release_days_str = release_days | divided_by: 31 | append: " months ago" %}
+                    {% elsif release_days > 365 %}
+                        {% assign release_days_str = release_days | divided_by: 365 | append: " years ago" %}
+                    {% endif %}
+                {% endif %}
+
+                {% if package[1].updated == "" %}
+                    {% assign updated_days = -1 %}
+                    {% assign updated_days_str = "Never" %}
+                {% else %}
+                    {% assign date_format = "%s" | date: "%s" %}
+                    {% assign date = package[1].updated | date: "%s" %}
+                    {% assign now = "now" | date: "%s" %}
+                    {% assign diff = now | minus: date %}
+                    {% assign updated_days = diff | divided_by: 86400 %}
+
+                    {% assign updated_days_str = updated_days | append: " days ago" %}
+                    {% if updated_days == 0 %}
+                        {% assign updated_days_str = "Today" %}
+                    {% elsif updated_days == 1 %}
+                        {% assign updated_days_str = "Yesterday" %}
+                    {% elsif updated_days > 31 and updated_days < 365 %}
+                        {% assign updated_days_str = updated_days | divided_by: 31 | append: " months ago" %}
+                    {% elsif updated_days > 365 %}
+                        {% assign updated_days_str = updated_days | divided_by: 365 | append: " years ago" %}
+                    {% endif %}
+                {% endif %}
+            <tr>
+                <td class="v-center">
+                    {% if package[1].image == "" %}
+                    {{ package[0] }} has no preview :(
+                    {% else %}
+                    <a href="#" class="preview-link" data-image="{{package[1].image}}" data-name="{{package[0]}}">
+                        <img src="{{package[1].image}}" style="max-width: 64px;" alt="{{package[0]}}" />
+                    </a>
+                    {% endif %}
+                </td>
+                <td data-sort="{{package[0]}}" data-search="{{package[0]}}" width="20%">
+                    <a href="{{'/packages/' | relative_url }}{{package[1].name}}/">
+                        {{package[0]}}
+                    </a>
+                </td>
+                <td data-search="{{package[1].description}}" data-sort="{{package[1].description}}">
+                    {{package[1].description}}</td>
+                <td>
+                    {% for tag in package[1].tags %}
+                    <span class="badge bg-gray filter-tag" title="{{tag}}" data-filter="{{tag}}">
+                        #{{tag}}
+                    </span>
+                    {% endfor %}
+                </td>
+                {% if release_days > -1 %}
+                    <td data-sort="{{release_days}}" data-search="{{release_days}}">
+                {% else %}
+                    <td data-sort="{{updated_days}}" data-search="{{updated_days}}">
+                {% endif %}
+                    {% if release_days > -1 %}
+                        {% assign release_badge = "bg-green" %}
+                        {% if release_days > 186 %}
+                        {% assign release_badge = "bg-red" %}
+                        {% elsif release_days > 93 %}
+                        {% assign release_badge = "bg-blue" %}
+                        {% endif %}
+                        
+                        <span class="badge {{release_badge}}" title="Last Release: {{package[1].release | date: " %d %b %Y"}}">
+                            :ship: {{release_days_str}}
+                        </span>
+                    {% endif %}
+                    {% if release_days > -1 and updated_days > -1 %}
+                        <br>
+                    {% endif %}
+                    {% if updated_days > -1 %}
+                        {% assign update_badge = "bg-green" %}
+                        {% if updated_days > 186 %}
+                        {% assign update_badge = "bg-red" %}
+                        {% elsif updated_days > 93 %}
+                        {% assign update_badge = "bg-blue" %}
+                        {% endif %}
+                        <span class="badge {{update_badge}}" title="Last Commit: {{package[1].updated | date: " %d %b %Y"}}">
+                            :zap: {{updated_days_str}}
+                        </span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

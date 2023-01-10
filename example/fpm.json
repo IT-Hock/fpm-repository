@@ -1,0 +1,15 @@
+{
+    "$schema": "https://raw.githubusercontent.com/IT-Hock/fpm-repository/master/schema.json",
+    "name": "my-awesome-plugin",
+    "description": "https://raw.githubusercontent.com/johndoe/my-awesome-plugin/master/README.md",
+    "image": "https://raw.githubusercontent.com/johndoe/my-awesome-plugin/master/screenshot.png",
+    "version": "1.0.0",
+    "tags": ["git", "productivity"],
+    "author": "John Doe <j.doe@doe.com>",
+    "repository": "https://github.com/johndoe/my-awesome-plugin",
+    "license": "MIT",
+    "dependencies": {
+        "awesome": "1.0.0",
+        "system.git": ">=1.7.0"
+    }
+}

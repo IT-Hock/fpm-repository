@@ -1,0 +1,278 @@
+.badge img {
+    width: 1em;
+    height: 1em;
+    margin: 0;
+    vertical-align: sub;
+}
+
+a.badge {
+    color: #fff;
+}
+
+a.badge:hover {
+    color: #f8f8f2;
+}
+
+.badge:hover {
+    cursor: pointer;
+}
+
+.bg-purple {
+    color: #fff;
+    background-color: #6f42c1;
+}
+
+a.bg-purple:hover {
+    color: #fff;
+    background-color: #7b4ad6;
+}
+
+.bg-pink {
+    color: #000;
+    background-color: #e83e8c;
+}
+
+a.bg-pink:hover {
+    color: #000;
+    background-color: #f66d9b;
+}
+
+.bg-green {
+    color: #fff;
+    background-color: #28a745;
+}
+
+a.bg-green:hover {
+    color: #fff;
+    background-color: #2ebe4e;
+}
+
+.bg-yellow {
+    color: #000;
+    background-color: #ffc107;
+}
+
+a.bg-yellow:hover {
+    color: #000;
+    background-color: #ffd43b;
+}
+
+.bg-red {
+    color: #fff;
+    background-color: #dc3545;
+}
+
+a.bg-red:hover {
+    color: #fff;
+    background-color: #e55365;
+}
+
+.bg-orange {
+    color: #fff;
+    background-color: #fd7e14;
+}
+
+a.bg-orange:hover {
+    color: #fff;
+    background-color: #ff9f43;
+}
+
+.bg-blue {
+    color: #fff;
+    background-color: #007bff;
+}
+
+a.bg-blue:hover {
+    color: #fff;
+    background-color: #1d8cf8;
+}
+
+.bg-gray {
+    color: #fff;
+    background-color: #6c757d;
+}
+
+a.bg-gray:hover {
+    color: #fff;
+    background-color: #868e96;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    vertical-align: middle;
+}
+
+table td {
+    border-bottom: 0;
+}
+
+table tr:nth-child(even),
+.even,
+table.dataTable tbody tr .even {
+    background-color: #383b4d !important;
+}
+
+table tr:nth-child(odd),
+.odd,
+table.dataTable tbody tr .odd {
+    background-color: #282a36 !important;
+}
+
+.panel {
+    display: block;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+select {
+    background-color: #383b4d;
+    border: 0;
+    color: #fff;
+    width: 10%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+input[type=text] {
+    background-color: #383b4d;
+    border: 0;
+    color: #fff;
+    width: 85%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+input[type=text]:focus,
+input[type=text]:active,
+input[type=text]:focus-visible {
+    outline: none;
+    border: 0;
+    color: #fff;
+}
+
+.right {
+    float: right;
+}
+
+.center {
+    text-align: center;
+}
+
+.d-none {
+    display: none;
+}
+
+.ml-5 {
+    margin-left: 5px;
+}
+
+.ml-10 {
+    margin-left: 10px;
+}
+
+.ml-15 {
+    margin-left: 15px;
+}
+
+.ml-20 {
+    margin-left: 20px;
+}
+
+.mb-5 {
+    margin-bottom: 5px;
+}
+
+.mb-15 {
+    margin-bottom: 15px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover,
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    color: #f8f8f2 !important;
+    border: 1px solid #6272a4 !important;
+    background: #44475a !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover,
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+    color: #6272a4 !important;
+    border: 1px solid transparent !important;
+    background: #44475a !important;
+}
+
+a.purple {
+    color: rgb(179, 131, 248);
+}
+
+a.purple:hover {
+    color: rgb(179, 131, 248, 0.8);
+}
+
+.border {
+    border: 1px solid rgb(179, 131, 248);
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.border.pink {
+    border: 1px solid rgb(255, 121, 198);
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.mlr-5 {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.mlr-10 {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.back-emoji {
+    vertical-align: sub;
+}
+
+.v-center {
+    vertical-align: middle;
+}
+
+.v-top {
+    vertical-align: top;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.w-96 {
+    width: 96%;
+}
+
+.m-0 {
+    margin: 0;
+}
+
+.copy-clipboard {
+    position: relative;
+    top: -4.5em;
+    left: -1.5em;
+    float: right;
+    padding: 0;
+    margin: 0;
+    margin-top: 0px;
+    margin-top: 1em;
+    background: transparent;
+    border: 0;
+}
+
+.wrapper,
+section {
+    max-width: 900px !important;
+}
