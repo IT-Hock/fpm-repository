@@ -21,8 +21,8 @@
 title: FPM Official Repository
 email: support@it-hock.de
 description:
-baseurl: "/fpm-repository" # the subpath of your site, e.g. /blog
-url: "https://it-hock.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://fpm.it-hock.de" # the base hostname & protocol for your site, e.g. http://example.com
 repository: IT-Hock/fpm-repository
 
 show_downloads: false
