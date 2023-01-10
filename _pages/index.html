@@ -7,72 +7,74 @@ layout: custom
 
 {% assign outdated_packages = 0 %}
 {% for package in site.data.packages %}
-    {% if package[1].updated != "" %}
-        {% assign last_update = package[1].updated | date: "%s" %}
-        {% assign now = "now" | date: "%s" %}
-        {% assign diff = now | minus: last_update %}
-        {% assign outdated_days = diff | divided_by: 86400 %}
-        {% if outdated_days > 183 %}
-            {% assign outdated_packages = outdated_packages | plus: 1 %}
-        {% endif %}
-    {% endif %}
+{% if package[1].updated != "" %}
+{% assign last_update = package[1].updated | date: "%s" %}
+{% assign now = "now" | date: "%s" %}
+{% assign diff = now | minus: last_update %}
+{% assign outdated_days = diff | divided_by: 86400 %}
+{% if outdated_days > 183 %}
+{% assign outdated_packages = outdated_packages | plus: 1 %}
+{% endif %}
+{% endif %}
 {% endfor %}
 
 {% assign outdated_themes = 0 %}
 {% for theme in site.data.themes %}
-    {% if theme[1].updated != "" %}
-        {% assign last_update = theme[1].updated | date: "%s" %}
-        {% assign now = "now" | date: "%s" %}
-        {% assign diff = now | minus: last_update %}
-        {% assign outdated_days = diff | divided_by: 86400 %}
-        {% if outdated_days > 183 %}
-            {% assign outdated_themes = outdated_themes | plus: 1 %}
-        {% endif %}
-    {% endif %}
+{% if theme[1].updated != "" %}
+{% assign last_update = theme[1].updated | date: "%s" %}
+{% assign now = "now" | date: "%s" %}
+{% assign diff = now | minus: last_update %}
+{% assign outdated_days = diff | divided_by: 86400 %}
+{% if outdated_days > 183 %}
+{% assign outdated_themes = outdated_themes | plus: 1 %}
+{% endif %}
+{% endif %}
 {% endfor %}
 
-
-<p>
-    Welcome to an unofficial package repository for Oh My Fish!<br />
-    Here you find a structured and categorized list of packages for Oh My Fish.<br />
-    <br />
-
-    Currently, there are <span class="badge bg-purple v-center">:package: {{ total_packages }}</span> packages and
-    <span class="badge bg-purple v-center">:rainbow: {{ total_themes }}</span> themes available.<br />
-    <div>
-    {% if outdated_packages > 0 %}
-        <div class="center" style="width: 49%; display: inline-block;">
-            <span class="badge bg-red v-center">
-                :warning: {{ outdated_packages }} / {{ total_packages }} ({{ outdated_packages | times: 100 | divided_by: total_packages }}%) :package:
-                are last updated more than 6 months ago
-            </span>
+<div style="max-width: 750px; margin: 0 auto; min-height: 550px;">
+    <p>
+        Welcome on the official Repository for the <a href="https://github.com/IT-Hock/fpm" target="_blank"
+            rel="noopener noreferrer">Fish Package Manager (FPM)</a>!
+    </p>
+    <p>
+        Not sure what FPM is? Check out the <a href="{{ '/about' | relative_url }}">about page</a>!
+    </p>
+    <p>
+        Currently, <span class="badge bg-purple v-center">:package: {{ total_packages }}</span> packages and
+        <span class="badge bg-purple v-center">:rainbow: {{ total_themes }}</span> themes are indexed.
+    </p>
+    <div class="row">
+        <div class="center col-6">
+            <a href="{{ '/themes/' | relative_url }}" style="font-size: 2em; font-weight: bold;">Theme Directory</a>
+            <p>
+                <span class="badge bg-purple v-center">:rainbow: {{ total_themes }}</span>
+            </p>
+            {% if outdated_themes > 0 %}
+            <div class="center">
+                <span class="badge bg-red v-center">
+                    :warning: {{ outdated_themes }} / {{ total_themes }} ({{ outdated_themes | times: 100 | divided_by:
+                    total_themes }}%) :rainbow:
+                    are last updated more than 6 months ago
+                </span>
+            </div>
+            {% endif %}
         </div>
-    {% endif %}
-    {% if outdated_themes > 0 %}
-        <div class="center" style="width: 49%; display: inline-block;">
-            <span class="badge bg-red v-center">
-                :warning: {{ outdated_themes }} / {{ total_themes }} ({{ outdated_themes | times: 100 | divided_by: total_themes }}%) :rainbow:
-                are last updated more than 6 months ago
-            </span>
+
+        <div class="center col-6">
+            <a href="{{ '/packages/' | relative_url }}" style="font-size: 2em; font-weight: bold;">Package Directory</a>
+            <p>
+                <span class="badge bg-purple v-center">:package: {{ total_packages }}</span>
+            </p>
+            {% if outdated_packages > 0 %}
+            <div class="center">
+                <span class="badge bg-red v-center">
+                    :warning: {{ outdated_packages }} / {{ total_packages }} ({{ outdated_packages | times: 100 |
+                    divided_by:
+                    total_packages }}%) :package:
+                    are last updated more than 6 months ago
+                </span>
+            </div>
+            {% endif %}
         </div>
-    {% endif %}
     </div>
-</p>
-
-<h2>How to install a package</h2>
-
-<p>
-    To install a package, simply run the following command:
-</p>
-
-<code class="panel w-100 d-block">
-    $ omf install &lt;package&gt;
-</code>
-
-<h2>
-    <a href="{{ '/themes/' | relative_url }}">Themes</a> <span class="badge bg-purple v-center">:rainbow: {{ total_themes }}</span>
-</h2>
-
-<h2>
-    <a href="{{ '/packages/' | relative_url }}">Packages</a> <span class="badge bg-purple v-center">:package: {{ total_packages }}</span>
-</h2>
+</div>

@@ -276,3 +276,8 @@ a.purple:hover {
 section {
     max-width: 900px !important;
 }
+
+section #title img {
+    max-width: unset !important;
+    padding-bottom: 0 !important;
+}
