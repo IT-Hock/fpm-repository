@@ -1,0 +1,21 @@
+---
+layout: none
+permalink: /packages.json
+---
+
+{
+    "version": "{{ site.github.build_revision }}",
+    "date": "{{ site.time | date: '%Y-%m-%d %H:%M:%S' }}",
+    "packages": {
+        {% for pkg in site.data.packages %}
+        "{{ pkg[0] | downcase }}": {{- pkg[1] | jsonify -}}
+        {% unless forloop.last %},{% endunless %}
+        {% endfor %}
+    },
+    "themes": {
+        {% for theme in site.data.themes %}
+        "{{ theme[0] | downcase }}": {{- theme[1] | jsonify -}}
+        {% unless forloop.last %},{% endunless %}
+        {% endfor %}
+    }
+}
