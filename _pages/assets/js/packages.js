@@ -9,7 +9,7 @@ $(document).ready(function () {
     };
     let table = $('#packages_table').DataTable({
         "order": [
-            [0, "asc"]
+            [1, "asc"]
         ],
         "columnDefs": [
             {

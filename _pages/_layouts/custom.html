@@ -6,16 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
 
     {% seo %}
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+    
     <link rel="stylesheet" href="{{'/assets/css/grid.css?v=' | append: site.github.build_revision | relative_url }}">
     <link rel="stylesheet"
         href="{{'/assets/css/utilities.css?v=' | append: site.github.build_revision | relative_url }}">
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
-    <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="{{'/assets/css/custom.css?v=' | append: site.github.build_revision | relative_url }}">
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="{{ '/assets/js/respond.js?v=' | append: site.github.build_revision | relative_url }}"></script>
     <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="//code.jquery.com/color/jquery.color-2.1.2.min.js"></script>
+
+    <script src="{{ '/assets/js/respond.js?v=' | append: site.github.build_revision | relative_url }}"></script>
     <script src="{{'/assets/js/main.js?v=' | append: site.github.build_revision | relative_url }}"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
