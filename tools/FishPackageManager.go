@@ -61,7 +61,7 @@ type PackageMap struct {
 
 func updatePackageInfo(client *github.Client, pkg *FullPackage) bool {
 	if strings.Contains(pkg.Repository, "github.com") {
-		results := regexp.MustCompile(`github.com/([^/]+)/([^/]+)`).FindStringSubmatch(pkg.Repository)
+		results := regexp.MustCompile(`github\\.com/([^/]+)/([^/]+)`).FindStringSubmatch(pkg.Repository)
 		owner := results[1]
 		repo := results[2]
 
