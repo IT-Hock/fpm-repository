@@ -1,0 +1,92 @@
+---
+layout: home.html
+scripts: [home.page.js]
+---
+<header class="masthead">
+    <div class="container position-relative">
+        <div class="row justify-content-center">
+            <div class="col-xl-6">
+                <div class="text-center">
+                    <img src="{{ "/assets/img/logo.svg" | prepend: site.baseurl_root }}" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-xl-6">
+                <div class="text-center">
+                    <h1 class="mb-5 mt-5 text-primary">
+                        The first usable package manager for the fish shell
+                    </h1>
+                    <form class="form-search" id="searchForm">
+                        <div class="row">
+                            <div class="col">
+                                <div class="input-group">
+                                    <input class="form-control form-control-lg" id="searchInput" type="text"
+                                           aria-label="Search packages"
+                                           placeholder="Search packages"/>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container features mt-5">
+    <div class="row feature">
+        <div class="col-md-6">
+            <h2 class="text-primary">
+                <i class="fa fa-search"></i>
+                Search
+            </h2>
+            <p>
+                Search for packages by name, description, or keyword.
+            </p>
+            <div class="text-center">
+                <img src="{{ "/assets/img/search.svg" | prepend: site.baseurl_root }}" alt="Search"
+                     class="w-75">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h2 class="text-primary">
+                <i class="fa fa-download"></i>
+                Install
+            </h2>
+            <p>
+                Install packages from the command line with a single command.
+            </p>
+            <div class="text-center">
+                <img src="{{ "/assets/img/install.svg" | prepend: site.baseurl_root }}" alt="Install" class="w-75">
+            </div>
+        </div>
+    </div>
+    <div class="row feature mt-5">
+        <div class="col-md-6">
+            <h2 class="text-primary">
+                <i class="fa fa-refresh"></i>
+                Always up to date
+            </h2>
+            <p>
+                Keep your packages up to date and never miss out on new features.
+            </p>
+            <div class="text-center">
+                <img src="{{ "/assets/img/update.svg" | prepend: site.baseurl_root }}" alt="Update" class="w-75">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h2 class="text-primary">
+                <i class="fa fa-cogs"></i>
+                FPM update
+            </h2>
+            <p>
+                FPM can update itself to the latest version with a single command.
+            </p>
+            <div class="text-center">
+                <img src="{{ "/assets/img/fpm-update.svg" | prepend: site.baseurl_root }}" alt="FPM update"
+                     class="w-75">
+            </div>
+        </div>
+    </div>
+</div>

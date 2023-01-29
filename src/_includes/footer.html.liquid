@@ -1,0 +1,40 @@
+<footer class="footer bg-light">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
+                <ul class="list-inline mb-2">
+                    <li class="list-inline-item">
+                        <a href="{{ "/about" | prepend: site.baseurl_root }}">About</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="fa fa-ellipsis-h"></i>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="{{ "/packages" | prepend: site.baseurl_root }}">Packages</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="fa fa-ellipsis-h"></i>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="{{ "/themes" | prepend: site.baseurl_root }}">Themes</a>
+                    </li>
+                </ul>
+                <div class="text-muted small mb-4 mb-lg-0">
+                    <p class="m-0">
+                        Made with <i class="fa fa-heart drac-text-red" data-toggle="tooltip" title="Love"></i> and <i
+                                class="fa fa-coffee drac-text-brown" data-toggle="tooltip" title="Coffee"></i>
+                        in <span class="fi fi-de" data-toggle="tooltip" title="Germany"></span> by <a href="https://it-hock.de" target="_blank">IT-Hock</a>.
+                    </p>
+                    <p class="m-0 mt-3">
+                        Generated at {{ site.time | date: "%Y-%m-%d" }}
+                    </p>
+                    <p class="m-0 mt-3">
+                        <i class="fa fa-copyright"></i> <a href="https://it-hock.de"
+                                                           target="_blank">IT-Hock</a> {{ site.time | date: "%Y" }}.
+                        All Rights Reserved.<br/>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

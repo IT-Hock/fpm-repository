@@ -1,0 +1,67 @@
+title: FPM Official Repository
+email: support@it-hock.de
+baseurl: ""
+url: "https://fpm.it-hock.de"
+short_url: "fpm.it-hock.de"
+description: "FPM Official Repository"
+keywords: fish, fisherman, fpm, package, manager, repository, fish package manager
+author: IT-Hock
+
+environment: development
+# Git commit hash should be in environment variable GIT_COMMIT
+build_revision:
+
+source: ./src
+
+liquid:
+  error_mode: strict
+  strict_filters: true
+  # Disabled due to long-standing bug: https://github.com/Shopify/liquid/issues/1034
+  strict_variables: false
+
+jekyll_tidy:
+  exclude:
+    - '**/*.scss'
+    - '**/*.js'
+    - '**/*.ts'
+
+#languages: [ "en", "de", "fr" ]
+#exclude_from_localizations: ["javascript", "images", "css"]
+
+safe: false
+
+exclude:
+  - assets/sass
+  - assets/css
+  - assets/ts
+  - assets/ts/generated
+
+plugins:
+#  - jekyll-multiple-languages-plugin
+#  - jekyll-random
+  - jekyll-tidy
+#  - jekyll-timeago
+#  - jekyll-redirect-from
+#  - jekyll-redirect-from
+#  - jekyll-paginate
+#  - jekyll-feed
+#  - jekyll-seo-tag
+#  - jekyll-sitemap
+#  - jekyll-tagging
+#  - jekyll-mentions
+#  - jekyll-datapage-generator
+#  - jemoji
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+  syntax_highlighter_opts:
+    css_class: 'rougeHighlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: false
+      start_line: 1

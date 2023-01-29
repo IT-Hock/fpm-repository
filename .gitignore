@@ -1,1 +1,8 @@
-/_pages/_data/*.json
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
+node_modules
+dist
+src/assets/ts/generated

@@ -1,0 +1,27 @@
+{% if include contains 'isBottom' and include.isBottom == false %}
+    <div class="row mb-3 list-info">
+        <div class="col-12 text-center">
+            Showing <span class="badge drac-bg-pink drac-text-black page-start">0</span> to <span class="badge drac-bg-pink drac-text-black page-end">0</span> of <span class="badge drac-bg-pink drac-text-black total">0</span> packages
+        </div>
+    </div>
+{% endif %}
+
+<div class="row">
+    <div class="col-12 d-flex justify-content-center">
+        <nav aria-label="Page navigation" class="pagination">
+        </nav>
+    </div>
+</div>
+
+{% if include contains 'isBottom' and include.isBottom %}
+    <div class="row list-info">
+        <div class="col-12 text-center">
+            Showing <span class="badge drac-bg-pink drac-text-black page-start">0</span> to <span class="badge drac-bg-pink drac-text-black page-end">0</span> of <span class="badge drac-bg-pink drac-text-black total">0</span>
+            {% if include contains 'isTheme' and include.isTheme %}
+                themes
+            {% else %}
+                packages
+            {% endif %}
+        </div>
+    </div>
+{% endif %}

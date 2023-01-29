@@ -1,0 +1,39 @@
+<nav class="navbar navbar-dark navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="{{ "/" | prepend: site.baseurl_root }}">
+            <img src="{{ "/assets/img/logo_plain.svg" | prepend: site.baseurl_root }}" alt="Logo"
+                 class="logo navbar-logo" />
+            <span class="navbar-brand-text">FPM</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa fa-bars"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item drac-bg-indigo mr-lg-3 mr-2">
+                    <a href="{{ "/" | prepend: site.baseurl_root }}" class="nav-link active">
+                        <i class="fa fa-home"></i> Home
+                    </a>
+                </li>
+                <li class="nav-item drac-bg-orange mr-lg-3 mr-2">
+                    <a href="{{ "/packages" | prepend: site.baseurl_root }}" class="nav-link">
+                        <i class="fa fa-paw"></i> Packages
+                    </a>
+                </li>
+                <li class="nav-item drac-bg-cyan mr-lg-3 mr-2">
+                    <a href="{{ "/themes" | prepend: site.baseurl_root }}" class="nav-link">
+                        <i class="fa fa-paint-brush"></i> Themes
+                    </a>
+                </li>
+                <li class="nav-item drac-bg-blue mr-lg-3 mr-2">
+                    <a href="{{ "/about" | prepend: site.baseurl_root }}" class="nav-link">
+                        <i class="fa fa-info-circle"></i> About
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

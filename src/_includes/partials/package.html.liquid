@@ -1,0 +1,46 @@
+<div class="drac-box drac-card drac-bg-purple drac-glow-none" style="max-height: 450px;">
+    <a href="{{ "/packages/" | prepend: site.baseurl_root | append: package.name }}">
+        {% if package.image != "" %}
+            <img src="{{ package.image }}" alt="{{ package.name }}" class="card-img card-img-top"
+                 style="object-fit: cover; height: 200px;">
+        {% else %}
+            <svg class="card-img card-img-top user-select-none" style="object-fit: cover; height: 200px;">
+                <g>
+                    <rect x="0" y="0" width="100%" height="100%" fill="var(--grey)"></rect>
+                    <text x="50%" y="50%" text-anchor="middle" alignment-baseline="middle" fill="var(--greySecondary)"
+                          font-size="1.5rem" font-style="italic">
+                        {{ package.name }}
+                    </text>
+                    <text x="50%" y="65%" text-anchor="middle" alignment-baseline="middle" fill="var(--greySecondary)"
+                          font-style="italic">
+                        has no image
+                    </text>
+                </g>
+            </svg>
+        {% endif %}
+    </a>
+    <div class="card-body" style="min-height: 200px;">
+        <h5 class="card-title">
+            <a href="{{ package.repository }}" class="drac-text-cyan">{{ package.name }}</a>
+        </h5>
+        <p>
+            <span class="badge badge-pill badge-dark">
+                <i class="fa fa-calendar"></i> {{ package.updated | date: "%Y-%m-%d" }}
+            </span>
+            {% if package.version != "" %}
+                <span class="badge badge-pill badge-dark">
+                    <i class="fa fa-tag"></i> {{ package.version }}
+                </span>
+            {% endif %}
+            {% if package contains "stars" %}
+                <span class="badge badge-pill badge-dark">
+                    <i class="fa fa-star"></i> {{ package.stars }}
+                </span>
+            {% endif %}
+        </p>
+
+        <p class="card-text">
+            {{ package.description }}
+        </p>
+    </div>
+</div>

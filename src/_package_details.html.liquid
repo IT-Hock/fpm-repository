@@ -1,0 +1,168 @@
+---
+layout: default.html
+scripts: ["details.page.js"]
+keywords: "packages, fish packages"
+---
+
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <div class="card drac-box drac-card drac-bg-black-secondary drac-glow-none w-100">
+                <div class="drac-bg-grey card-img card-img-top user-select-none" style="height: 200px;">
+                    {% if page.package['image'] == "" %}
+                        <svg class="card-img card-img-top user-select-none" style="object-fit: cover; height: 200px;">
+                            <g>
+                                <text x="50%" y="50%" text-anchor="middle" alignment-baseline="middle"
+                                      fill="var(--greySecondary)"
+                                      font-size="1.5rem" font-style="italic">
+                                    {{ page.package['name'] }}
+                                </text>
+                                <text x="50%" y="65%" text-anchor="middle" alignment-baseline="middle"
+                                      fill="var(--greySecondary)"
+                                      font-style="italic">
+                                    has no image
+                                </text>
+                            </g>
+                        </svg>
+                    {% else %}
+                        <img src="{{ page.package['image'] }}" class="card-img card-img-top user-select-none"
+                             loading="lazy" style="object-fit: cover; height: 200px;" alt="{{ page.package['name'] }}">
+                    {% endif %}
+                </div>
+            </div>
+            <div class="drac-text-white">
+                {% unless page.package['readme'] == "" %}
+                    <div class="markdown-body">
+                        {{ page.package['readme'] | markdownify | linkify: page.package['repository'] }}
+                    </div>
+                {% else %}
+                    <p class="text-center">
+                        <i class="fa fa-exclamation-triangle"></i>
+                        This package has no readme.
+                    </p>
+                {% endunless %}
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="mb-2">
+                <a class="btn btn-md float-right" data-clipboard-target="#copy-data">
+                    <i class="fa fa-clipboard"></i>
+                </a>
+                <code class="d-block p-2" id="copy-data">
+                    fpm install {{ page.package['name'] }}
+                </code>
+            </div>
+
+            <a href="{{ "/issues" | linkify: page.package['repository'] }}" target="_blank" class="btn btn-secondary w-100 mb-2 text-left">
+                <i class="fa fa-bug"></i>
+                Issues ({{ page.package['issues'] }})
+            </a>
+
+            <a href="{{ page.package['repository'] }}" target="_blank" class="btn btn-secondary w-100 mb-2 text-left">
+                <i class="fa fa-github"></i>
+                Source
+            </a>
+
+            <h4 class="mb-2 mt-2">Activity</h4>
+            <div class="chart-container mb-2" style="position: relative; height: 100px; width: 100%;">
+                <a href="{{ page.package['repository'] | append: "/graphs/commit-activity" }}"
+                   class="d-block h-100 w-100"
+                   target="_blank">
+                    <canvas id="activity-chart" data-chart="{{ page.package['activity'] | jsonify | escape }}"></canvas>
+                </a>
+            </div>
+
+            <div class="mb-2">
+                <div class="d-flex justify-content-between">
+                    <span>
+                        <i class="fa fa-code"></i> Commits last 3 months
+                    </span>
+                    <span>{{ page.package['stars'] }}</span>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <span>
+                        <i class="fa fa-clock-o"></i> Last commit
+                    </span>
+                    <span data-toggle="tooltip" data-placement="top"
+                          title="{{ page.package['updated'] | date: "%d %B %Y" }}">
+                        {{ page.package['updated'] | ago }}
+                    </span>
+                </div>
+            </div>
+
+
+            {% assign dependencies = page.package['dependencies'] | size %}
+            {% assign tags = page.package['tags'] | size %}
+            {% assign versions = page.package['versions'] | size %}
+
+            {% unless tags == 0 and dependencies == 0 %}
+                <h4 class="mb-2 mt-2">Usage</h4>
+            {% endunless %}
+
+            {% unless dependencies == 0 %}
+                <div class="mb-2">
+                    <div class="d-flex justify-content-between">
+                        <span>
+                            <i class="fa fa-object-ungroup"></i> Dependencies
+                        </span>
+                        <span>
+                            {{ page.package['dependencies'] | size }}
+                        </span>
+                    </div>
+                </div>
+            {% endunless %}
+
+            {% unless tags == 0 %}
+                <h4 class="mb-2 mt-2">Tags</h4>
+                <div class="mb-2">
+                    {% for tag in page.package['tags'] %}
+                        <a href="{{ "/tags/" | relative_url | append: tag }}"
+                           class="badge badge-secondary">{{ tag }}</a>
+                    {% endfor %}
+                </div>
+            {% endunless %}
+
+            {% unless versions == 0 %}
+                <h4 class="mb-2 mt-2">Versions</h4>
+                <div class="mb-2">
+                    {% for version in page.package['versions'] %}
+                        <div class="row">
+                            <div class="col-6">
+                                <span data-toggle="tooltip" data-placement="top"
+                                      title="{{ version["release_date"] | date: "%d %B %Y" }}">
+                                    <i class="fa fa-clock-o"></i>
+                                    {{ version["release_date"] | ago }}
+                                </span>
+                            </div>
+                            <div class="col-6">
+                                <span class="badge badge-secondary pull-right" data-toggle="tooltip"
+                                      data-placement="top" title="{{ version["description"] }}">
+                                    {{ version["version"] }}
+                                </span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endunless %}
+
+            <h4 class="mb-2 mt-2">Contributors</h4>
+
+            <div class="mb-2">
+                <div class="row">
+                    {% for contributor in page.package['contributors'] %}
+                        <div class="col-md-6 col-sm-12 mb-2">
+                            <a href="https://github.com/{{ contributor['name'] }}" target="_blank"
+                               class="justify-content-center drac-d-grid">
+                                <img src="{{ contributor['avatar'] }}" class="img-fluid img-thumbnail rounded-circle"
+                                     alt="{{ contributor['name'] }}">
+                                <span class="text-center">
+                                {{ contributor['name'] }}
+                            </span>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

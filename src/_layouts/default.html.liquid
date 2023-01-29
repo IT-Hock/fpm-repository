@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="{% if site.lang %}{{ site.lang }}{% else %}en{% endif %}">
+{% include header.html.liquid %}
+<body>
+
+{% include navigation.html.liquid %}
+
+<div class="main-container" style="min-height: 738px;">
+    {{ content }}
+</div>
+
+{% include footer.html.liquid %}
+</body>
+</html>

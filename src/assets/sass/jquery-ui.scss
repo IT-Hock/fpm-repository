@@ -1,0 +1,57 @@
+@import 'dracula-helper';
+
+$flat-theme-color: #21222C;
+$flat-theme-light-color: #2B3940;
+$flat-theme-dark-color: rgb(75, 102, 112);
+
+.ui-widget-content {
+    background: $flat-theme-color;
+    color: $text-color;
+    border: 0;
+
+    a {
+        color: $white;
+        &:hover {
+            color: $greyTernary;
+        }
+        &:focus {
+            color: $greyTernary;
+        }
+        &:active {
+            color: $greyTernary;
+        }
+    }
+}
+
+ul.ui-autocomplete {
+    max-width: 300px;
+}
+
+.ui-menu-item {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ui-state-hover a,
+.ui-state-hover a:hover,
+.ui-state-hover a:link,
+.ui-state-hover a:visited,
+.ui-state-focus a,
+.ui-state-focus a:hover,
+.ui-state-focus a:link,
+.ui-state-focus a:visited {
+    color: $greyTernary;
+}
+
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus {
+    border: 0;
+    background: $flat-theme-dark-color;
+    color: $text-color;
+    font-weight: bold;
+}

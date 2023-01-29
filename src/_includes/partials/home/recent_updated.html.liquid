@@ -1,0 +1,16 @@
+<div class="row mb-2">
+    <div class="col-12">
+        <h2 class="text-primary">
+            <i class="fa fa-calendar-plus-o"></i> Recently updated packages
+        </h2>
+    </div>
+</div>
+
+<div class="row">
+    {% for packageObj in featuredPackages['recentUpdated'] %}
+        {% assign package = packageObj[1] %}
+        <div class="col-md-4 mb-4">
+            {% include partials/package.html.liquid %}
+        </div>
+    {% endfor %}
+</div>

@@ -1,0 +1,15 @@
+
+<!doctype html>
+<html lang="{% if site.lang %}{{ site.lang }}{% else %}en{% endif %}">
+{% include header.html.liquid %}
+<body class="drac-bg-black">
+
+{% include navigation.html.liquid %}
+
+<div class="pb-5">
+    {{ content }}
+</div>
+
+{% include footer.html.liquid %}
+</body>
+</html>

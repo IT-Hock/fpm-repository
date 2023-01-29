@@ -1,0 +1,193 @@
+@import "dracula-helper";
+
+// EXTENSION
+$brown: #a54f2a !default;
+
+.drac-bg-blue {
+    background-color: $blue;
+}
+
+.drac-bg-indigo {
+    background-color: $indigo;
+}
+
+.drac-bg-cyan,
+.drac-bg-orange,
+.drac-bg-pink,
+.drac-bg-purple,
+.drac-bg-red,
+.drac-bg-green,
+.drac-bg-yellow,
+.btn-success,
+.btn-danger
+{
+    color: $black !important;
+    > a {
+        color: $black !important;
+    }
+    &:hover {
+        > a {
+            color: $greySecondary !important;
+        }
+    }
+}
+
+.drac-bg-black,
+.drac-bg-blue,
+.drac-bg-indigo
+{
+    color: $white !important;
+    > a {
+        color: $white !important;
+    }
+    &:hover {
+        > a {
+            color: $greyTernary !important;
+        }
+    }
+}
+
+// Override form control colors
+.form-control{
+    color: $white;
+    background-color: $cyan-100;
+    border: 0;
+    border-radius: 0;
+
+    &:disabled {
+        background-color: $blackTernary;
+        color: $black;
+        font-style: italic;
+    }
+
+    &::placeholder {
+        color: $glowColor;
+        font-style: italic;
+    }
+
+    &:focus {
+        color: $white;
+        background-color: $cyan-200;
+    }
+}
+
+/* Google fucking chrome dropdowns */
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.page-item {
+    .page-link {
+        &:focus, &:hover, &.active {
+            color: $white;
+        }
+
+        color: $black;
+    }
+}
+
+.page-item.disabled, .page-item.disabled .page-link {
+    color: $grey;
+}
+
+input[type="checkbox"],
+input[type="radio"]{
+    &:checked {
+        background-color: $cyan-200;
+    }
+}
+
+.badge-pill {
+    border-radius: 0;
+}
+
+.drac-card {
+    border-radius: 0;
+}
+
+.navbar-dark {
+    background: $grey !important;
+    color: $white !important;
+
+    input {
+        background: $cyan-100;
+        color: $white;
+
+        &::placeholder {
+            color: $glowColor;
+        }
+
+        &:focus {
+            color: $white;
+            background: $cyan-200;
+        }
+    }
+}
+
+.drac-glow-none {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.swal2-popup {
+    background: $black !important;
+    color: $white !important;
+    border-radius: 0 !important;
+    border: 0 !important;
+}
+
+.swal2-styled.swal2-confirm {
+    background: $secondary !important;
+    color: $white !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    &:hover {
+        background: $secondaryLight !important;
+    }
+}
+
+.swal2-icon.swal2-error {
+    color: $red !important;
+}
+
+.swal2-icon.swal2-error [class^="swal2-x-mark-line"] {
+    background-color: $red !important;
+}
+
+.swal2-icon.swal2-warning {
+    color: $yellow !important;
+}
+
+.tooltip .arrow:before {
+    border-top-color: $primary !important;
+}
+.tooltip-inner {
+    background: $primary !important;
+    color: $black !important;
+    border-top: 1px solid $black !important;
+    border-left: 1px solid $black !important;
+    border-right: 1px solid $black !important;
+    border-bottom: 0 !important;
+    border-radius: 0 !important;
+}
+
+.img-thumbnail {
+    border-color: $primaryLight !important;
+    background-color: $primary !important;
+}
+
+code {
+    color: var(--purple-900) !important;
+    display: inline-block;
+}
+
+pre code {
+    display: block;
+}
+
+.drac-text-brown {
+    color: $brown !important;
+}

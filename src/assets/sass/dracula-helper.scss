@@ -1,0 +1,202 @@
+$black: #21222c !default;
+$blackSecondary: #414558 !default;
+$blackTernary: #a7abbe !default;
+$blackLight: rgba(33, 34, 44, .05) !default;
+$grey: #414558 !default;
+$greySecondary: #626784 !default;
+$greyTernary: #b6b9c9 !default;
+$greyLight: rgba(65, 69, 88, .05) !default;
+$greyDark: rgba(65, 69, 88, .1) !default;
+$white: #f8f8f2 !default;
+$whiteSecondary: #fff !default;
+$whiteLight: hsla(60, 30%, 96%, .05) !default;
+$cyan: #80ffea !default;
+$cyanSecondary: #ccfff6 !default;
+$blue: #6272a4 !default;
+$blueSecondary: #8be9fd !default;
+$blueLight: rgba(98, 114, 164, .05) !default;
+$cyanLight: rgba(128, 255, 234, .05) !default;
+$green: #8aff80 !default;
+$greenSecondary: #d0ffcc !default;
+$greenLight: rgba(138, 255, 128, .05) !default;
+$orange: #ffca80 !default;
+$orangeSecondary: #ffeacc !default;
+$orangeLight: rgba(255, 202, 128, .05) !default;
+$pink: #ff80bf !default;
+$pinkSecondary: #ffcce6 !default;
+$pinkLight: rgba(255, 128, 191, .05) !default;
+$purple: #9580ff !default;
+$purpleSecondary: #d4ccff !default;
+$purpleLight: rgba(149, 128, 255, .05) !default;
+$red: #ff9580 !default;
+$redSecondary: #ffd4cc !default;
+$redLight: rgba(255, 149, 128, .05) !default;
+$yellow: #ffff80 !default;
+$yellowSecondary: #ffc !default;
+$yellowLight: rgba(255, 255, 128, .05) !default;
+$deepPurple: #8e44ad !default;
+$deepPurpleSecondary: #9b59b6 !default;
+$deepPurpleLight: rgba(142, 68, 173, .05) !default;
+$indigo: #9b59b6 !default;
+$indigoSecondary: #8e44ad !default;
+$indigoLight: rgba(155, 89, 182, .05) !default;
+$teal: #1abc9c !default;
+$tealSecondary: #16a085 !default;
+$tealLight: rgba(26, 188, 156, .05) !default;
+$cyan-transparent: rgba(128, 255, 234, .1) !default;
+$green-transparent: rgba(138, 255, 128, .1) !default;
+$orange-transparent: rgba(255, 202, 128, .1) !default;
+$pink-transparent: rgba(255, 128, 191, .1) !default;
+$purple-transparent: rgba(149, 128, 255, .1) !default;
+$red-transparent: rgba(255, 149, 128, .1) !default;
+$yellow-transparent: rgba(255, 255, 128, .1) !default;
+$disabled: #6c7393 !default;
+$gradientDegree: 135deg !default;
+$glowColor: hsla(0, 0%, 100%, .25) !default;
+$cyan-100: rgba(128, 255, 234, .1) !default;
+$green-100: rgba(138, 255, 128, .1) !default;
+$orange-100: rgba(255, 202, 128, .1) !default;
+$pink-100: rgba(255, 128, 191, .1) !default;
+$purple-100: rgba(149, 128, 255, .1) !default;
+$red-100: rgba(255, 149, 128, .1) !default;
+$yellow-100: rgba(255, 255, 128, .1) !default;
+$cyan-200: rgba(128, 255, 234, .2) !default;
+$green-200: rgba(138, 255, 128, .2) !default;
+$orange-200: rgba(255, 202, 128, .2) !default;
+$pink-200: rgba(255, 128, 191, .2) !default;
+$purple-200: rgba(149, 128, 255, .2) !default;
+$red-200: rgba(255, 149, 128, .2) !default;
+$yellow-200: rgba(255, 255, 128, .2) !default;
+$cyan-300: rgba(128, 255, 234, .3) !default;
+$green-300: rgba(138, 255, 128, .3) !default;
+$orange-300: rgba(255, 202, 128, .3) !default;
+$pink-300: rgba(255, 128, 191, .3) !default;
+$purple-300: rgba(149, 128, 255, .3) !default;
+$red-300: rgba(255, 149, 128, .3) !default;
+$yellow-300: rgba(255, 255, 128, .3) !default;
+$cyan-400: rgba(128, 255, 234, .4) !default;
+$green-400: rgba(138, 255, 128, .4) !default;
+$orange-400: rgba(255, 202, 128, .4) !default;
+$pink-400: rgba(255, 128, 191, .4) !default;
+$purple-400: rgba(149, 128, 255, .4) !default;
+$red-400: rgba(255, 149, 128, .4) !default;
+$yellow-400: rgba(255, 255, 128, .4) !default;
+$cyan-500: rgba(128, 255, 234, .5) !default;
+$green-500: rgba(138, 255, 128, .5) !default;
+$orange-500: rgba(255, 202, 128, .5) !default;
+$pink-500: rgba(255, 128, 191, .5) !default;
+$purple-500: rgba(149, 128, 255, .5) !default;
+$red-500: rgba(255, 149, 128, .5) !default;
+$yellow-500: rgba(255, 255, 128, .5) !default;
+$cyan-600: rgba(128, 255, 234, .6) !default;
+$green-600: rgba(138, 255, 128, .6) !default;
+$orange-600: rgba(255, 202, 128, .6) !default;
+$pink-600: rgba(255, 128, 191, .6) !default;
+$purple-600: rgba(149, 128, 255, .6) !default;
+$red-600: rgba(255, 149, 128, .6) !default;
+$yellow-600: rgba(255, 255, 128, .6) !default;
+$cyan-700: rgba(128, 255, 234, .7) !default;
+$green-700: rgba(138, 255, 128, .7) !default;
+$orange-700: rgba(255, 202, 128, .7) !default;
+$pink-700: rgba(255, 128, 191, .7) !default;
+$purple-700: rgba(149, 128, 255, .7) !default;
+$red-700: rgba(255, 149, 128, .7) !default;
+$yellow-700: rgba(255, 255, 128, .7) !default;
+$cyan-800: rgba(128, 255, 234, .8) !default;
+$green-800: rgba(138, 255, 128, .8) !default;
+$orange-800: rgba(255, 202, 128, .8) !default;
+$pink-800: rgba(255, 128, 191, .8) !default;
+$purple-800: rgba(149, 128, 255, .8) !default;
+$red-800: rgba(255, 149, 128, .8) !default;
+$yellow-800: rgba(255, 255, 128, .8) !default;
+$cyan-900: rgba(128, 255, 234, .9) !default;
+$green-900: rgba(138, 255, 128, .9) !default;
+$orange-900: rgba(255, 202, 128, .9) !default;
+$pink-900: rgba(255, 128, 191, .9) !default;
+$purple-900: rgba(149, 128, 255, .9) !default;
+$red-900: rgba(255, 149, 128, .9) !default;
+$yellow-900: rgba(255, 255, 128, .9) !default;
+$accentColor: var(--purple) !default;
+$purple-cyan: linear-gradient(var(--gradientDegree), var(--purple) 0%, var(--cyan) 100%) !default;
+$yellow-pink: linear-gradient(var(--gradientDegree), var(--yellow) 0%, var(--pink) 100%) !default;
+$cyan-green: linear-gradient(var(--gradientDegree), var(--cyan) 0%, var(--green) 100%) !default;
+$pink-purple: linear-gradient(var(--gradientDegree), var(--pink) 0%, var(--purple) 100%) !default;
+
+$primary: #8be9fd !default;
+//$primary: $purple !default;
+//$secondary: $cyan !default;
+$secondary: #6f42c1 !default;
+
+$primaryLight: #a3f1ff !default;
+$secondaryLight: #8a5bd1 !default;
+
+$primaryDark: #74d1e5 !default;
+$secondaryDark: #5a3ea1 !default;
+
+$success: $green !default;
+$info: $cyan !default;
+$warning: $yellow !default;
+$danger: $red !default;
+$light: $greyLight !default;
+$dark: $greySecondary !default;
+
+$text-color: $white !default;
+$input-bg: $grey !default;
+
+$yiq-contrasted-threshold: 250 !default;
+
+// Fonts Families
+$headings-font-family: "Fira Code", "monospace" !default;
+$font-family-base: "Fira Code", "monospace" !default;
+
+// Body
+$body-color: $white !default;
+
+// Components
+$border-radius: 0 !default;
+$border-radius-lg: 0 !default;
+$border-radius-sm: 0 !default;
+
+// Headings
+$headings-color: $blackLight !default;
+
+// Tables
+$table-border-color: rgba(0, 0, 0, .05) !default;
+
+// Dropdowns
+$dropdown-link-hover-color: $white !default;
+$dropdown-link-hover-bg: $secondary !default;
+
+// Navbar
+$navbar-dark-color: rgba($white, .6) !default;
+$navbar-dark-hover-color: $white !default;
+$navbar-light-color: rgba($black, .3) !default;
+$navbar-light-hover-color: $blackLight !default;
+$navbar-light-active-color: $blackLight !default;
+$navbar-light-disabled-color: rgba($black, .1) !default;
+
+// Pagination
+
+$pagination-color: $white !default;
+$pagination-bg: $primary !default;
+$pagination-border-color: $primary !default;
+$pagination-hover-color: $white !default;
+$pagination-hover-bg: $secondary !default;
+$pagination-hover-border-color: $pagination-hover-bg !default;
+$pagination-active-bg: $secondary !default;
+$pagination-active-border-color: $pagination-active-bg !default;
+$pagination-disabled-color: $white !default;
+$pagination-disabled-bg: #cce8e0 !default;
+$pagination-disabled-border-color: $pagination-disabled-bg !default;
+
+// Breadcrumbs
+
+$breadcrumb-bg: $primary !default;
+$breadcrumb-divider-color: $white !default;
+$breadcrumb-active-color: $breadcrumb-divider-color !default;
+
+$background-color: $black !default;
+
+$scrollbar-background-color: $blue !default;
+$scrollbar-color: $primary !default;
+$scrollbar-highlight-color: $primaryLight !default;

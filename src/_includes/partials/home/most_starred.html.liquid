@@ -1,0 +1,18 @@
+<div class="row mb-2">
+    <div class="col-12">
+        <h2 class="text-primary">
+            <i class="fa fa-star"></i>
+            Most starred packages<a href="#" style="font-size:10px;" class="align-top mr-0"
+                                title="Last updated: {{ site.time | date: "%Y-%m-%d %H:%M:%S" }}"
+            ><i class="fa fa-info-circle"></i></a>
+        </h2>
+    </div>
+</div>
+<div class="row">
+    {% for packageObj in featuredPackages['mostStarred'] %}
+        {% assign package = packageObj[1] %}
+        <div class="col-md-4 mb-4">
+            {% include partials/package.html.liquid %}
+        </div>
+    {% endfor %}
+</div>

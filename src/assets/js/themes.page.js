@@ -1,0 +1,1 @@
+app.setPage(new app.ThemePage());
