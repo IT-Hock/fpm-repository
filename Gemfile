@@ -16,7 +16,7 @@ group :jekyll_plugins do
 #    gem 'jekyll-multiple-languages-plugin'
     gem 'jekyll-avatar'
 end
-gem "jemoji", "~> 0.12.0"
+gem "jemoji", "~> 0.13.0"
 
 gem 'wdm', '>= 0.1.1' if Gem.win_platform?
 
